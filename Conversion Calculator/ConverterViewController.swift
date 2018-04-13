@@ -15,6 +15,12 @@ class ConverterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        inputDisplay.textAlignment = NSTextAlignment.right
+        outputDisplay.textAlignment = NSTextAlignment.right
+        
+        self.inputDisplay.text = "°F"
+        self.outputDisplay.text = "°C"
 
         // Do any additional setup after loading the view.
     }
@@ -28,7 +34,7 @@ class ConverterViewController: UIViewController {
         let alert = UIAlertController(title: "Choose Converter", message: "choose", preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "fahrenheit to celcius", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
-            
+
 //            let text = self.inputDisplay.text ?? ""
 //
 //            guard let amount = Double(text)else{
@@ -42,6 +48,8 @@ class ConverterViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "celcius to fahrenheit", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
+            
+
 //            let text = self.inputDisplay.text ?? ""
             
 //            guard let amount = Double(text)else{
