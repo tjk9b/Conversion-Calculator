@@ -9,10 +9,25 @@
 import UIKit
 
 class ConverterViewController: UIViewController {
+    var number = ""
 
     @IBOutlet weak var inputDisplay: UITextField!
     @IBOutlet weak var outputDisplay: UITextField!
     
+    @IBAction func numberPressed(_ sender: UIButton){
+        number += "\(sender.tag - 1)"
+        
+        inputDisplay.text = number
+    }
+    @IBAction func dotPressed(_ sender: UIButton) {
+        number += "."
+        inputDisplay.text = number
+    }
+    
+    @IBAction func clear(_ sender: UIButton) {
+        self.inputDisplay.text = "°F"
+        self.outputDisplay.text = "°C"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,57 +50,57 @@ class ConverterViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "fahrenheit to celcius", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
 
-//            let text = self.inputDisplay.text ?? ""
-//
-//            guard let amount = Double(text)else{
-//                return
-//            }
-//
-//            let result = (amount - 32)/1.8
+            let text = self.inputDisplay.text ?? " °F"
+
+            guard let amount = Double(text)else{
+                return
+            }
+
+            let result = (amount - 32)/1.8
             
             
-//            self.outputDisplay.text = "\(result) °C"
+            self.outputDisplay.text = "\(result) °C"
         }))
         alert.addAction(UIAlertAction(title: "celcius to fahrenheit", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
             
 
-//            let text = self.inputDisplay.text ?? ""
+            let text = self.inputDisplay.text ?? " °C"
             
-//            guard let amount = Double(text)else{
-//                return
-//            }
-//
-//            let result = (amount * 1.8) + 32
+            guard let amount = Double(text)else{
+                return
+            }
+
+            let result = (amount * 1.8) + 32
             
             
-//            self.outputDisplay.text = "\(result) °F"
+            self.outputDisplay.text = "\(result) °F"
         }))
         alert.addAction(UIAlertAction(title: "miles to kilometers", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
-//            let text = self.inputDisplay.text ?? ""
+            let text = self.inputDisplay.text ?? " mi"
             
-//            guard let amount = Double(text)else{
-//                return
-//            }
-//
-//            let result = amount / 0.62137
+            guard let amount = Double(text)else{
+                return
+            }
+
+            let result = amount / 0.62137
             
             
-//            self.outputDisplay.text = "\(result)"
+            self.outputDisplay.text = "\(result) km"
         }))
         alert.addAction(UIAlertAction(title: "kilometers to miles", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
-//            let text = self.inputDisplay.text ?? ""
+            let text = self.inputDisplay.text ?? " km"
             
-//            guard let amount = Double(text)else{
-//                return
-//            }
-//
-//            let result = amount * 0.62137
-//
-//
-//            self.outputDisplay.text = "\(result)"
+            guard let amount = Double(text)else{
+                return
+            }
+
+            let result = amount * 0.62137
+
+
+            self.outputDisplay.text = "\(result) mi"
        }))
        self.present(alert,animated: true, completion: nil)
     }
